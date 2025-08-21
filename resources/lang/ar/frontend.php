@@ -1,0 +1,27 @@
+<?php
+
+return [
+    'shop_now' => 'تسوق الآن',
+    'discover_now' => 'اكتشف الآن',
+    'new_items' => 'منتجات جديدة',
+    'recently_added' => 'مضاف حديثاً',
+    'hot_item' => 'منتج مميز',
+    'latest_items' => 'أحدث المنتجات',
+    'from_our_blog' => 'من مدونتنا',
+    'continue_reading' => 'متابعة القراءة',
+    'free_shipping' => 'شحن مجاني',
+    'orders_over' => 'للطلبات أكثر من 100$',
+    'free_return' => 'إرجاع مجاني',
+    'within_30_days' => 'خلال 30 يوم',
+    'secure_payment' => 'دفع آمن',
+    'secure_payment_desc' => 'دفع آمن 100%',
+    'best_price' => 'أفضل سعر',
+    'guaranteed_price' => 'سعر مضمون',
+    'quick_shop' => 'تسوق سريع',
+    'add_to_wishlist' => 'أضف للمفضلة',
+    'add_to_cart' => 'أضف للسلة',
+    'in_stock' => 'متوفر',
+    'out_stock' => 'غير متوفر',
+    'customer_review' => 'تقييم العملاء',
+    'size' => 'المقاس',
+];
