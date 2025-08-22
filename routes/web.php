@@ -32,9 +32,20 @@ Route::get('/setup-database', function() {
     try {
         Artisan::call('migrate', ['--force' => true]);
         Artisan::call('db:seed', ['--force' => true]);
+        Artisan::call('storage:link');
         return 'Database setup completed successfully! <a href="/">Go to Home</a>';
     } catch (Exception $e) {
         return 'Database setup failed: ' . $e->getMessage();
+    }
+});
+
+// Storage link route
+Route::get('/setup-storage', function() {
+    try {
+        Artisan::call('storage:link');
+        return 'Storage linked successfully! Images should work now. <a href="/">Go to Home</a>';
+    } catch (Exception $e) {
+        return 'Storage link failed: ' . $e->getMessage();
     }
 });
 
