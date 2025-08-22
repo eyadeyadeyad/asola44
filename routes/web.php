@@ -48,6 +48,23 @@ Route::get('/setup-storage', function() {
     }
 });
 
+// Build assets route
+Route::get('/build-assets', function() {
+    try {
+        $output = [];
+        $return_var = 0;
+        exec('cd ' . base_path() . ' && npm run production 2>&1', $output, $return_var);
+        
+        if ($return_var === 0) {
+            return 'Assets compiled successfully! CSS/JS should work now. <a href="/">Go to Home</a><br><pre>' . implode("\n", $output) . '</pre>';
+        } else {
+            return 'Asset compilation failed: <pre>' . implode("\n", $output) . '</pre>';
+        }
+    } catch (Exception $e) {
+        return 'Asset build failed: ' . $e->getMessage();
+    }
+});
+
 Route::get('/','FrontendController@home')->name('home');
 
 // Frontend Routes
