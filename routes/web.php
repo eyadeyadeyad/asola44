@@ -31,9 +31,8 @@ Route::get('login/{provider}/callback/', 'Auth\LoginController@Callback')->name(
 Route::get('/setup-database', function() {
     try {
         Artisan::call('migrate', ['--force' => true]);
-        Artisan::call('db:seed', ['--force' => true]);
         Artisan::call('storage:link');
-        return 'Database setup completed successfully! <a href="/">Go to Home</a>';
+        return 'Database tables created successfully! <a href="/">Go to Home</a>';
     } catch (Exception $e) {
         return 'Database setup failed: ' . $e->getMessage();
     }
