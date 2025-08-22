@@ -65,6 +65,30 @@ Route::get('/build-assets', function() {
     }
 });
 
+// Copy frontend assets route
+Route::get('/copy-assets', function() {
+    try {
+        $sourcePath = resource_path('frontend');
+        $destPath = public_path('frontend');
+        
+        if (is_dir($sourcePath)) {
+            $output = [];
+            $return_var = 0;
+            exec('cp -r ' . $sourcePath . ' ' . $destPath . ' 2>&1', $output, $return_var);
+            
+            if ($return_var === 0) {
+                return 'Frontend assets copied successfully! <a href="/">Go to Home</a>';
+            } else {
+                return 'Asset copy failed: <pre>' . implode("\n", $output) . '</pre>';
+            }
+        } else {
+            return 'Frontend assets source not found at: ' . $sourcePath;
+        }
+    } catch (Exception $e) {
+        return 'Asset copy failed: ' . $e->getMessage();
+    }
+});
+
 Route::get('/','FrontendController@home')->name('home');
 
 // Frontend Routes
