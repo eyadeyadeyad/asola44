@@ -30,9 +30,9 @@ Route::get('login/{provider}/callback/', 'Auth\LoginController@Callback')->name(
 // Database setup route for Railway
 Route::get('/setup-database', function() {
     try {
-        Artisan::call('migrate', ['--force' => true]);
+        Artisan::call('migrate:fresh', ['--force' => true]);
         Artisan::call('storage:link');
-        return 'Database tables created successfully! <a href="/">Go to Home</a>';
+        return 'Database reset and tables created successfully! <a href="/">Go to Home</a>';
     } catch (Exception $e) {
         return 'Database setup failed: ' . $e->getMessage();
     }
