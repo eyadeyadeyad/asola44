@@ -65,28 +65,26 @@ Route::get('/build-assets', function() {
     }
 });
 
-// Copy frontend assets route
-Route::get('/copy-assets', function() {
-    try {
-        $sourcePath = resource_path('frontend');
-        $destPath = public_path('frontend');
-        
-        if (is_dir($sourcePath)) {
-            $output = [];
-            $return_var = 0;
-            exec('cp -r ' . $sourcePath . ' ' . $destPath . ' 2>&1', $output, $return_var);
-            
-            if ($return_var === 0) {
-                return 'Frontend assets copied successfully! <a href="/">Go to Home</a>';
-            } else {
-                return 'Asset copy failed: <pre>' . implode("\n", $output) . '</pre>';
-            }
-        } else {
-            return 'Frontend assets source not found at: ' . $sourcePath;
-        }
-    } catch (Exception $e) {
-        return 'Asset copy failed: ' . $e->getMessage();
+// Check assets route
+Route::get('/check-assets', function() {
+    $publicFrontend = public_path('frontend');
+    $publicCss = public_path('frontend/css');
+    $publicJs = public_path('frontend/js');
+    
+    $info = [];
+    $info[] = 'Public frontend exists: ' . (is_dir($publicFrontend) ? 'YES' : 'NO');
+    $info[] = 'Public CSS exists: ' . (is_dir($publicCss) ? 'YES' : 'NO');
+    $info[] = 'Public JS exists: ' . (is_dir($publicJs) ? 'YES' : 'NO');
+    
+    if (is_dir($publicCss)) {
+        $cssFiles = scandir($publicCss);
+        $info[] = 'CSS files: ' . implode(', ', array_filter($cssFiles, function($f) { return $f !== '.' && $f !== '..'; }));
     }
+    
+    $info[] = 'Mix CSS exists: ' . (file_exists(public_path('css/app.css')) ? 'YES' : 'NO');
+    $info[] = 'Mix JS exists: ' . (file_exists(public_path('js/app.js')) ? 'YES' : 'NO');
+    
+    return '<pre>' . implode("\n", $info) . '</pre><br><a href="/">Go to Home</a>';
 });
 
 Route::get('/','FrontendController@home')->name('home');
