@@ -27,6 +27,17 @@ Route::post('password-reset', 'FrontendController@showResetForm')->name('passwor
 Route::get('login/{provider}/', 'Auth\LoginController@redirect')->name('login.redirect');
 Route::get('login/{provider}/callback/', 'Auth\LoginController@Callback')->name('login.callback');
 
+// Database setup route for Railway
+Route::get('/setup-database', function() {
+    try {
+        Artisan::call('migrate', ['--force' => true]);
+        Artisan::call('db:seed', ['--force' => true]);
+        return 'Database setup completed successfully! <a href="/">Go to Home</a>';
+    } catch (Exception $e) {
+        return 'Database setup failed: ' . $e->getMessage();
+    }
+});
+
 Route::get('/','FrontendController@home')->name('home');
 
 // Frontend Routes
