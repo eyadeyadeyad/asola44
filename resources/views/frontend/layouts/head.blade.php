@@ -12,33 +12,36 @@
 
 <!-- StyleSheet -->
 <link rel="manifest" href="/manifest.json">
-<!-- Bootstrap -->
-<link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}">
-<!-- Magnific Popup -->
-<link rel="stylesheet" href="{{asset('frontend/css/magnific-popup.min.css')}}">
-<!-- Font Awesome -->
-<link rel="stylesheet" href="{{asset('frontend/css/font-awesome.css')}}">
-<!-- Fancybox -->
-<link rel="stylesheet" href="{{asset('frontend/css/jquery.fancybox.min.css')}}">
-<!-- Themify Icons -->
-<link rel="stylesheet" href="{{asset('frontend/css/themify-icons.css')}}">
-<!-- Nice Select CSS -->
-<link rel="stylesheet" href="{{asset('frontend/css/niceselect.css')}}">
-<!-- Animate CSS -->
-<link rel="stylesheet" href="{{asset('frontend/css/animate.css')}}">
-<!-- Flex Slider CSS -->
-<link rel="stylesheet" href="{{asset('frontend/css/flex-slider.min.css')}}">
-<!-- Owl Carousel -->
-<link rel="stylesheet" href="{{asset('frontend/css/owl-carousel.css')}}">
-<!-- Slicknav -->
-<link rel="stylesheet" href="{{asset('frontend/css/slicknav.min.css')}}">
-<!-- Jquery Ui -->
-<link rel="stylesheet" href="{{asset('frontend/css/jquery-ui.css')}}">
+<!-- Bootstrap CDN -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Font Awesome CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<!-- Animate CSS CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+<!-- Owl Carousel CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" rel="stylesheet">
+<!-- jQuery UI CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.13.2/themes/ui-lightness/jquery-ui.min.css" rel="stylesheet">
+<!-- Magnific Popup CDN -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css" rel="stylesheet">
 
-<!-- Eshop StyleSheet -->
-<link rel="stylesheet" href="{{asset('frontend/css/reset.css')}}">
-<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
-<link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
+<!-- Local Assets (fallback) -->
+<link rel="stylesheet" href="{{asset('frontend/css/bootstrap.css')}}" onerror="this.remove()">
+<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}" onerror="this.remove()">
+<link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}" onerror="this.remove()">
+
+<!-- Basic Ecommerce Styles -->
+<style>
+.product-img img { width: 100%; height: 200px; object-fit: cover; }
+.single-product { margin-bottom: 30px; border: 1px solid #eee; padding: 15px; }
+.product-content h3 { font-size: 16px; margin: 10px 0; }
+.product-price { font-weight: bold; color: #007bff; }
+.btn-primary { background: #007bff; border: none; padding: 10px 20px; }
+.header { background: #fff; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.main-menu { list-style: none; display: flex; gap: 20px; }
+.main-menu a { text-decoration: none; color: #333; padding: 10px 15px; }
+</style>
 <style>
     /* Multilevel dropdown */
     .dropdown-submenu {
