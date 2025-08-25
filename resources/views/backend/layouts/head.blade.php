@@ -9,12 +9,22 @@
     <title>Ecommerce Laravel || DASHBOARD</title>
   
     <!-- Custom fonts for this template-->
-    <link href="{{asset('backend/vendor/fontawesome-free/css/all.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-  
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
     <!-- Custom styles for this template-->
-    <!-- Visit 'codeastro' for more projects -->
-    <link href="{{asset('backend/css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <link href="{{asset('backend/css/sb-admin-2.min.css')}}" rel="stylesheet" onerror="this.remove()">
+    
+    <!-- Admin Panel Basic Styles -->
+    <style>
+    .sidebar { background: linear-gradient(180deg, #4e73df 10%, #224abe 100%); }
+    .card { box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15); border: 1px solid #e3e6f0; }
+    .btn-primary { background-color: #4e73df; border-color: #4e73df; }
+    .table th { background-color: #f8f9fc; }
+    </style>
     <!-- Arabic Font -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
