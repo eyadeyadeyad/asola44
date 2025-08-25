@@ -54,10 +54,13 @@ body { font-family: 'Poppins', Arial, sans-serif; line-height: 1.6; color: #333;
 
 /* Navigation */
 .main-menu { background: #007bff; padding: 0; }
-.main-menu ul { list-style: none; display: flex; margin: 0; padding: 0; }
-.main-menu li { position: relative; }
+.main-menu ul { list-style: none !important; display: flex; margin: 0; padding: 0; }
+.main-menu li { position: relative; list-style: none !important; }
+.main-menu li:before { display: none !important; content: none !important; }
 .main-menu a { color: white; text-decoration: none; padding: 12px 16px; display: block; transition: all 0.3s; font-size: 14px; }
 .main-menu a:hover { background: rgba(255,255,255,0.1); }
+.navbar ul, .navbar li { list-style: none !important; }
+.navbar li:before { display: none !important; }
 
 /* Hero Section */
 .hero-area { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 80px 0; text-align: center; }
