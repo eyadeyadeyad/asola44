@@ -68,6 +68,18 @@ Route::get('/build-assets', function() {
 // Add sample data route
 Route::get('/add-sample-data', function() {
     try {
+        // Add admin user
+        DB::table('users')->updateOrInsert(
+            ['email' => 'admin@admin.com'],
+            [
+                'name' => 'Admin',
+                'email' => 'admin@admin.com',
+                'password' => Hash::make('123456'),
+                'role' => 'admin',
+                'status' => 'active'
+            ]
+        );
+        
         // Add sample categories
         $categories = [
             ['title' => 'Electronics', 'slug' => 'electronics', 'status' => 'active', 'is_parent' => 1],
