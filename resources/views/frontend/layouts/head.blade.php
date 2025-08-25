@@ -38,22 +38,22 @@
 body { font-family: 'Poppins', Arial, sans-serif; line-height: 1.6; color: #333; }
 
 /* Header */
-.header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
-.topbar { background: #f8f9fa; padding: 8px 0; font-size: 14px; }
-.middle { padding: 15px 0; }
-.logo img { max-height: 50px; }
-.search-bar { background: #f8f9fa; border-radius: 25px; padding: 5px; }
-.search-bar input { border: none; background: transparent; padding: 10px 15px; width: 100%; }
-.search-bar button { background: #007bff; color: white; border: none; padding: 10px 15px; border-radius: 20px; }
-.right-bar { display: flex; gap: 15px; align-items: center; }
-.single-icon { font-size: 20px; color: #333; position: relative; }
-.total-count { position: absolute; top: -8px; right: -8px; background: #dc3545; color: white; border-radius: 50%; width: 18px; height: 18px; font-size: 12px; display: flex; align-items: center; justify-content: center; }
+.header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+.topbar { background: #f8f9fa; padding: 5px 0; font-size: 12px; }
+.middle { padding: 10px 0; }
+.logo img { max-height: 40px; }
+.search-bar { background: #f8f9fa; border-radius: 20px; padding: 3px; max-width: 400px; }
+.search-bar input { border: none; background: transparent; padding: 8px 12px; width: 100%; font-size: 14px; }
+.search-bar button { background: #007bff; color: white; border: none; padding: 8px 12px; border-radius: 15px; font-size: 14px; }
+.right-bar { display: flex; gap: 10px; align-items: center; }
+.single-icon { font-size: 18px; color: #333; position: relative; }
+.total-count { position: absolute; top: -6px; right: -6px; background: #dc3545; color: white; border-radius: 50%; width: 16px; height: 16px; font-size: 10px; display: flex; align-items: center; justify-content: center; }
 
 /* Navigation */
-.main-menu { background: #007bff; }
+.main-menu { background: #007bff; padding: 0; }
 .main-menu ul { list-style: none; display: flex; margin: 0; padding: 0; }
 .main-menu li { position: relative; }
-.main-menu a { color: white; text-decoration: none; padding: 15px 20px; display: block; transition: all 0.3s; }
+.main-menu a { color: white; text-decoration: none; padding: 12px 16px; display: block; transition: all 0.3s; font-size: 14px; }
 .main-menu a:hover { background: rgba(255,255,255,0.1); }
 
 /* Hero Section */
@@ -71,6 +71,10 @@ body { font-family: 'Poppins', Arial, sans-serif; line-height: 1.6; color: #333;
 .single-product:hover { transform: translateY(-5px); }
 .product-img { position: relative; overflow: hidden; }
 .product-img img { width: 100%; height: 250px; object-fit: cover; transition: transform 0.3s; }
+.product-img:empty:before { content: '🖼️ No Image'; display: flex; align-items: center; justify-content: center; height: 250px; background: #f8f9fa; color: #999; font-size: 16px; }
+.default-img, .hover-img { width: 100%; height: 250px; object-fit: cover; background: #f8f9fa; }
+img[src=""], img:not([src]) { display: none; }
+.product-img { background: #f8f9fa; min-height: 250px; display: flex; align-items: center; justify-content: center; }
 .single-product:hover .product-img img { transform: scale(1.05); }
 .product-content { padding: 20px; }
 .product-content h3 { font-size: 18px; margin-bottom: 10px; color: #333; }
