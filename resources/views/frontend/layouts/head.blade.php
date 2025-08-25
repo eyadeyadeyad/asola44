@@ -35,7 +35,10 @@
 <style>
 /* Reset and Base */
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Poppins', Arial, sans-serif; line-height: 1.6; color: #333; }
+ul, ol { list-style: none; }
+li:before { content: none !important; }
+a { text-decoration: none; }
+body { font-family: 'Poppins', Arial, sans-serif; line-height: 1.6; color: #333; background: #fff; }
 
 /* Header */
 .header { background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
@@ -66,6 +69,12 @@ body { font-family: 'Poppins', Arial, sans-serif; line-height: 1.6; color: #333;
 .section-title { text-align: center; margin-bottom: 50px; }
 .section-title h2 { font-size: 2.5rem; color: #333; margin-bottom: 15px; }
 .section-title p { color: #666; font-size: 1.1rem; }
+
+/* Empty State */
+.empty-products { text-align: center; padding: 60px 20px; background: #f8f9fa; border-radius: 10px; margin: 40px 0; }
+.empty-products h3 { color: #666; margin-bottom: 15px; }
+.empty-products p { color: #999; margin-bottom: 20px; }
+.empty-products .btn { margin: 5px; }
 
 .single-product { background: white; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 30px; overflow: hidden; transition: transform 0.3s; }
 .single-product:hover { transform: translateY(-5px); }

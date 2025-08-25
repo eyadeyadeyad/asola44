@@ -65,26 +65,68 @@ Route::get('/build-assets', function() {
     }
 });
 
-// Check assets route
-Route::get('/check-assets', function() {
-    $publicFrontend = public_path('frontend');
-    $publicCss = public_path('frontend/css');
-    $publicJs = public_path('frontend/js');
-    
-    $info = [];
-    $info[] = 'Public frontend exists: ' . (is_dir($publicFrontend) ? 'YES' : 'NO');
-    $info[] = 'Public CSS exists: ' . (is_dir($publicCss) ? 'YES' : 'NO');
-    $info[] = 'Public JS exists: ' . (is_dir($publicJs) ? 'YES' : 'NO');
-    
-    if (is_dir($publicCss)) {
-        $cssFiles = scandir($publicCss);
-        $info[] = 'CSS files: ' . implode(', ', array_filter($cssFiles, function($f) { return $f !== '.' && $f !== '..'; }));
+// Add sample data route
+Route::get('/add-sample-data', function() {
+    try {
+        // Add sample categories
+        $categories = [
+            ['title' => 'Electronics', 'slug' => 'electronics', 'status' => 'active', 'is_parent' => 1],
+            ['title' => 'Fashion', 'slug' => 'fashion', 'status' => 'active', 'is_parent' => 1],
+            ['title' => 'Home & Garden', 'slug' => 'home-garden', 'status' => 'active', 'is_parent' => 1]
+        ];
+        
+        foreach ($categories as $cat) {
+            DB::table('categories')->updateOrInsert(['slug' => $cat['slug']], $cat);
+        }
+        
+        // Add sample products
+        $products = [
+            [
+                'title' => 'Sample Laptop',
+                'slug' => 'sample-laptop',
+                'summary' => 'High performance laptop',
+                'description' => 'This is a sample laptop with great features.',
+                'price' => 999.99,
+                'offer_price' => 899.99,
+                'stock' => 10,
+                'cat_id' => 1,
+                'status' => 'active',
+                'is_featured' => 1
+            ],
+            [
+                'title' => 'Sample T-Shirt',
+                'slug' => 'sample-tshirt',
+                'summary' => 'Comfortable cotton t-shirt',
+                'description' => 'This is a sample t-shirt made from 100% cotton.',
+                'price' => 29.99,
+                'offer_price' => 24.99,
+                'stock' => 50,
+                'cat_id' => 2,
+                'status' => 'active',
+                'is_featured' => 1
+            ],
+            [
+                'title' => 'Sample Plant Pot',
+                'slug' => 'sample-plant-pot',
+                'summary' => 'Beautiful ceramic plant pot',
+                'description' => 'This is a sample plant pot perfect for your garden.',
+                'price' => 19.99,
+                'offer_price' => 15.99,
+                'stock' => 25,
+                'cat_id' => 3,
+                'status' => 'active',
+                'is_featured' => 0
+            ]
+        ];
+        
+        foreach ($products as $product) {
+            DB::table('products')->updateOrInsert(['slug' => $product['slug']], $product);
+        }
+        
+        return 'Sample data added successfully! <a href="/">Go to Home</a>';
+    } catch (Exception $e) {
+        return 'Failed to add sample data: ' . $e->getMessage();
     }
-    
-    $info[] = 'Mix CSS exists: ' . (file_exists(public_path('css/app.css')) ? 'YES' : 'NO');
-    $info[] = 'Mix JS exists: ' . (file_exists(public_path('js/app.js')) ? 'YES' : 'NO');
-    
-    return '<pre>' . implode("\n", $info) . '</pre><br><a href="/">Go to Home</a>';
 });
 
 Route::get('/','FrontendController@home')->name('home');
