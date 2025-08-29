@@ -4,8 +4,8 @@ services:
     runtime: php
     buildCommand: |
       composer install --no-dev --optimize-autoloader
-      npm install
-      npm run production
+      npm ci --silent
+      npm run production --silent
       cp .env.example .env
       echo "APP_KEY=base64:$(openssl rand -base64 32)" >> .env
       touch database/database.sqlite
