@@ -1,17 +1,46 @@
-name: Deploy to Railway
+name: Build Only
 
 on:
   push:
     branches: [ main ]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v4
     
-    - name: Deploy to Railway
-      uses: railway-app/railway-deploy@v1
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
       with:
-        railway-token: ${{ secrets.RAILWAY_TOKEN }}
-        service: ${{ secrets.RAILWAY_SERVICE_ID }}
+        php-version: '8.2'
+        extensions: mbstring, dom, fileinfo, mysql, gd, zip, sqlite3
+        
+    - name: Cache Composer dependencies
+      uses: actions/cache@v3
+      with:
+        path: vendor
+        key: composer-${{ hashFiles('composer.lock') }}
+        
+    - name: Install Composer dependencies
+      run: composer install --no-dev --optimize-autoloader
+      
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        
+    - name: Install NPM dependencies
+      run: npm install
+      
+    - name: Build assets
+      run: npm run production
+      
+    - name: Create .env file
+      run: |
+        cp .env.example .env
+        echo "APP_KEY=base64:$(openssl rand -base64 32)" >> .env
+        
+    - name: Run tests
+      run: vendor/bin/phpunit --testdox
