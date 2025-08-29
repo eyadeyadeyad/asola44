@@ -1,10 +1,8 @@
 #!/bin/bash
 
-# Start script for production
-echo "Starting Laravel application..."
-
-# Run migrations
+# Run migrations and seed
 php artisan migrate --force
+php artisan db:seed --force
 
-# Start the server
+# Start server
 php artisan serve --host=0.0.0.0 --port=${PORT:-8000}
